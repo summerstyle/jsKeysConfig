@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jsKeysConfig generator</title>
+	<meta charset="utf-8" />
+	<link href="main.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<noscript>
+	<div id="noscript">
+		Please, enable javascript in your browser
+	</div>
+</noscript>
+
+<header id="header">
+	<h1 id="logo">
+		<a href="http://github.com/summerstyle/keysconfig">
+			<img alt="jsKeysConfig" src="data:image/png;base64,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" />
+		</a>                                    
+	</h1>
+	<nav id="nav" class="clearfix">
+		<ul>
+			<li id="settings_button"><a href="#">settings</a></li>
+			<li id="generate_button"><a href="#">generate</a></li>
+			<li id="clear_button"><a href="#">clear</a></li>
+			<li id="help_button"><a href="#">?</a></li>
+		</ul>
+	</nav>
+	<div id="coords"></div>
+	<div id="debug"></div>
+</header>
+
+<div id="wrapper">
+
+
+
+
+<ul id="keys">
+	<li class="row first">
+		<ul class="keys clearfix">
+			<li data-keycode="27" data-name="ESC" class="key named">Esc</li>
+			
+			<li data-keycode="112" data-name="F1" class="key named">F1</li>
+			<li data-keycode="113" data-name="F2" class="key named">F2</li>
+			<li data-keycode="114" data-name="F3" class="key named">F3</li>
+			<li data-keycode="115" data-name="F4" class="key named">F4</li>
+			<li data-keycode="116" data-name="F5" class="key named">F5</li>
+			<li data-keycode="117" data-name="F6" class="key named">F6</li>
+			<li data-keycode="118" data-name="F7" class="key named">F7</li>
+			<li data-keycode="119" data-name="F8" class="key named">F8</li>
+			<li data-keycode="120" data-name="F9" class="key named">F9</li>
+			<li data-keycode="121" data-name="F10" class="key named">F10</li>
+			<li data-keycode="122" data-name="F11" class="key named">F11</li>
+			<li data-keycode="123" data-name="F12" class="key named">F12</li>
+			<li data-keycode="36" data-name="HOME" class="key named">Home</li>
+			<li data-keycode="35" data-name="END" class="key named">End</li>
+			<li data-keycode="45" data-name="INSERT" class="key named">Insert</li>
+			<li data-keycode="46" data-name="DELETE" class="key named">Delete</li>
+		</ul>
+	</li>
+	<li class="row">
+		<ul class="keys clearfix">    
+			<li data-keycode="192" data-name="`" class="key double">
+				<span class="shift">~</span>
+				<span class="main">`</span>
+			</li>
+			<li data-keycode="49" data-name="_1" class="key double">
+				<span class="shift">!</span>
+				<span class="main">1</span>
+			</li>
+			<li data-keycode="50" data-name="_2" class="key double">
+				<span class="shift">@</span>
+				<span class="main">2</span>
+			</li>
+			<li data-keycode="51" data-name="_3" class="key double">
+				<span class="shift">#</span>
+				<span class="main">3</span>
+			</li>
+			<li data-keycode="52" data-name="_4" class="key double">
+				<span class="shift">$</span>
+				<span class="main">4</span>
+			</li>
+			<li data-keycode="53" data-name="_5" class="key double">
+				<span class="shift">%</span>
+				<span class="main">5</span>
+			</li>
+			<li data-keycode="54" data-name="_6" class="key double">
+				<span class="shift">^</span>
+				<span class="main">6</span>
+			</li>
+			<li data-keycode="55" data-name="_7" class="key double">
+				<span class="shift">&</span>
+				<span class="main">7</span>
+			</li>
+			<li data-keycode="56" data-name="_8" class="key double">
+				<span class="shift">*</span>
+				<span class="main">8</span>
+			</li>
+			<li data-keycode="57" data-name="_9" class="key double">
+				<span class="shift">(</span>
+				<span class="main">9</span>
+			</li>
+			<li data-keycode="48" data-name="_0" class="key double">
+				<span class="shift">)</span>
+				<span class="main">0</span>
+			</li>
+			<li data-keycode="173" data-name="DASH" class="key double">
+				<span class="shift">_</span>
+				<span class="main">-</span>
+			</li>
+			<li data-keycode="61" data-name="EQUAL" class="key double">
+				<span class="shift">+</span>
+				<span class="main">=</span>
+			</li>
+			<li data-keycode="8" data-name="BACKSPACE" class="key named right column2">
+				Backspace
+			</li>
+		</ul>
+	</li>
+	<li class="row">
+		<ul class="keys clearfix">
+			<li data-keycode="9" data-name="Tab" class="key named column2">Tab</li>
+			<li data-keycode="81" data-name="Q" class="key">Q</li>
+			<li data-keycode="87" data-name="W" class="key">W</li>
+			<li data-keycode="69" data-name="E" class="key">E</li>
+			<li data-keycode="82" data-name="R" class="key">R</li>
+			<li data-keycode="84" data-name="T" class="key">T</li>
+			<li data-keycode="89" data-name="Y" class="key">Y</li>
+			<li data-keycode="85" data-name="U" class="key">U</li>
+			<li data-keycode="73" data-name="I" class="key">I</li>
+			<li data-keycode="79" data-name="O" class="key">O</li>
+			<li data-keycode="80" data-name="P" class="key">P</li>
+			<li data-keycode="219" data-name="[" class="key double">
+				<span class="shift">{</span>
+				<span class="main">[</span>
+			</li>
+			<li data-keycode="221" data-name="" class="key double">
+				<span class="shift">}</span>
+				<span class="main">]</span>
+			</li>
+			<li data-keycode="220" data-name="" class="key double">
+				<span class="shift">|</span>
+				<span class="main">\</span>
+			</li>
+		</ul>
+	</li>
+	<li class="row">
+		<ul class="keys clearfix">
+			<li data-keycode="20" data-name="CapsLock" class="key named column2">CapsLock</li>
+			<li data-keycode="65" data-name="A" class="key">A</li>
+			<li data-keycode="83" data-name="S" class="key">S</li>
+			<li data-keycode="68" data-name="D" class="key">D</li>
+			<li data-keycode="70" data-name="F" class="key">F</li>
+			<li data-keycode="71" data-name="G" class="key">G</li>
+			<li data-keycode="72" data-name="H" class="key">H</li>
+			<li data-keycode="74" data-name="J" class="key">J</li>
+			<li data-keycode="75" data-name="K" class="key">K</li>
+			<li data-keycode="76" data-name="L" class="key">L</li>
+			<li data-keycode="59" data-name="Colon" class="key double">
+				<span class="shift">:</span>
+				<span class="main">;</span>
+			</li>
+			<li data-keycode="222" data-name="Quote" class="key double">
+				<span class="shift">"</span>
+				<span class="main">'</span>
+			</li>
+			<li data-keycode="13" data-name="Enter" class="key named right column2">
+				Enter
+			</li>
+		</ul>
+	</li>
+	<li class="row">
+		<ul class="keys clearfix">
+			<li data-keycode="16" data-name="LEFT_SHIFT" class="key named column2">Shift</li>
+			<li data-keycode="90" data-name="Z" class="key">Z</li>
+			<li data-keycode="88" data-name="X" class="key">X</li>
+			<li data-keycode="67" data-name="C" class="key">C</li>
+			<li data-keycode="86" data-name="V" class="key">V</li>
+			<li data-keycode="66" data-name="B" class="key">B</li>
+			<li data-keycode="78" data-name="N" class="key">N</li>
+			<li data-keycode="77" data-name="M" class="key">M</li>
+			<li data-keycode="188" data-name="Left_arrow" class="key double">
+				<span class="main">&lt;</span>
+				<span class="shift">,</span>
+			</li>
+			<li data-keycode="190" data-name="Right_arrow" class="key double">
+				<span class="main">&gt;</span>
+				<span class="shift">.</span>
+			</li>
+			<li data-keycode="191" data-name="Question" class="key double">
+				<span class="main">?</span>
+				<span class="shift">/</span>
+			</li>
+			<li data-keycode="38" data-name="Up" class="key">&uarr;</li>
+			<li data-keycode="16" data-name="RIGHT_SHIFT" class="key named right column2">Shift</li>
+		</ul>
+	</li>
+	<li class="row">
+		<ul class="keys clearfix">
+			<li data-keycode="NULL" data-name="Fn" class="key named">Fn</li>
+			<li data-keycode="17" data-name="Left_Ctrl" class="key named">Ctrl</li>
+			<li data-keycode="91" data-name="Win" class="key named">Win</li>
+			<li data-keycode="18" data-name="Left_alt" class="key named">Alt</li>
+			<li data-keycode="32" data-name="Space" class="key column5"></li>
+			<li data-keycode="18" data-name="Right_alt" class="key named">Alt</li>
+			<li data-keycode="17" data-name="Right_Ctrl" class="key named">Ctrl</li>
+			<li data-keycode="37" data-name="Left" class="key">&larr;</li>
+			<li data-keycode="40" data-name="Down" class="key">&darr;</li>
+			<li data-keycode="39" data-name="Right" class="key">&rarr;</li>
+			<li data-keycode="NULL" data-name="Print_screen" class="key named">PrtSc</li>
+			<li data-keycode="33" data-name="Page_Up" class="key named">PgUp</li>
+			<li data-keycode="34" data-name="Page_Down" class="key named">PgDn</li>
+		</ul>
+	</li>
+</ul>
+
+<!-- Форма для выбора сортировки - по алфавиту или по коду -->
+<!-- Кнопка "сгенерировать" -->
+<!-- Поле для сгенерированного объекта -->
+
+</div>
+
+
+
+<!-- For js code -->
+<div id="code">
+    <span class="close_button" title="close"></span>
+    <div id="code_content"></div>
+</div>
+
+<!-- Settings block -->
+<form action="#" id="settings">
+    <span class="close_button"></span>
+    <div class="txt">
+        <section>
+            <h2>1. Set settings</h2>
+            <p>
+				Выровнять по столбам (форматировать столбцы),
+				Сортировать
+				- в порядке добавления
+				- по цифровому коду
+				- по алфавиту
+				- по группам клавиш
+			</p>
+        </section>
+    </div>
+</form>
+
+<!-- Help block -->
+<div id="overlay"></div>
+<div id="help">
+    <span class="close_button"></span>
+    <div class="txt">
+        <section>
+            <h2>1. Set settings</h2>
+            <p>
+				Set the sorting type (default - in order of added).
+			</p>
+        </section>
+        <section>
+            <h2>2. Select keys</h2>
+            <p>
+				Press and select keys (second click is deselect key).
+			</p>
+        </section>
+		<section>
+            <h2>3. Generate config</h2>
+            <p>
+				and copy it in your application.
+			</p>
+        </section>
+        <section>
+			<h2>4. Use config</h2>
+            <p>switch (e.keyCode) {<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;case KEYS.ENTER:<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// code<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;case KEYS.DELETE:<br />
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// code<br />
+			}</p>
+        </section>
+    </div>
+    <footer>
+        <a href="http://github.com/summerstyle/jskeysconfig">jsKeysConfig generator</a><br />
+        &copy; 2013 Vera Lobatcheva<br />
+        GPL3 License
+    </footer>
+</div>
+
+<script src="jskeysconfig.js"></script>
+</body>
+</html>
