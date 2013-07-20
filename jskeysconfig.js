@@ -1,6 +1,6 @@
 /*
  * Keys config generator
- * http://github.com/summerstyle/keysconfig
+ * http://github.com/summerstyle/jskeysconfig
  *
  * Copyright 2013 Vera Lobacheva (summerstyle.ru)
  * Released under the GPL3 (GPL3.txt)
@@ -176,9 +176,8 @@ var keysConfig = (function() {
 		deselect : function(without_pressed_keys) {
 			this.el.classList.remove('selected');
 			if (!without_pressed_keys) {
-				pressed_keys.add(this);
+				pressed_keys.remove(this);
 			}
-			pressed_keys.remove(this);
 		},
 		toggle : function(without_pressed_keys) {
 			if (this.el.classList.contains('selected')) {
