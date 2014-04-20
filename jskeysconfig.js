@@ -1,65 +1,185 @@
 /*
- * Keys config generator
- * http://github.com/summerstyle/jskeysconfig
- *
- * Copyright 2013 Vera Lobacheva (summerstyle.ru)
+ * jsKeysConfig generator
+ * http://github.com/summerstyle/jsKeysConfig
+ * 
+ * Copyright 2014 Vera Lobacheva (http://summerstyle.ru)
  * Released under the GPL3 (GPL3.txt)
- *
- * Thu May 15 2013 15:15:27 GMT+0400
+ * 
+ * Sun April 20 2014 20:25:15 GMT+0400
+ * 
  */
 
 'use strict';
 
 var keysConfig = (function() {
-	var keyboard = document.getElementById('keys'),
-		keys_els = keyboard.getElementsByTagName('li'),
-		keys = [],
-		settings = {
-			columns : false,
-			order_by : 0 // 0 - by added, 1 - by alphabet, 4 - by codes , 3 - by blocks
+	/* Settings */
+	var settings = {
+		columns : true,
+		sort_by : 0 // 0 - by groups and alphabet, 1 - by added, 2 - by codes
+	};
+	
+	/* Utilities */
+    var utils = {
+		id : function (str) {
+			return document.getElementById(str);
+		},
+        hide : function(node) {
+            node.style.display = 'none';
+			
+			return this;
+        },
+        show : function(node) {
+            node.style.display = 'block';
+			
+			return this;
+        },
+		foreach : function(arr, func) {
+			for(var i = 0, count = arr.length; i < count; i++) {
+				func(arr[i], i);
+			};
+		},
+		foreachReverse : function(arr, func) {
+			for(var i = arr.length - 1; i >= 0; i--) {
+				func(arr[i], i);
+			};
+		},
+		debug : (function() {
+			var output = document.getElementById('debug');
+			
+			return function() {
+				output.innerHTML = [].join.call(arguments, ' ');
+			};
+		})(),
+		stopEvent : function(e) {
+			e.stopPropagation();
+			e.preventDefault();
+			
+			return this;
+		},
+		extend : function(obj, options) {
+			var target = {};
+			
+			for (name in obj) {
+				if(obj.hasOwnProperty(name)) {
+					target[name] = options[name] ? options[name] : obj[name];
+				};
+			};
+			
+			return target;
+		}
+	};
+	
+	/* Keyboard */
+	var keyboard = (function() {
+		var el = document.getElementById('keys'),
+			keys_els = el.getElementsByClassName('key'),
+			show_codes = document.getElementById('show_codes'),
+			keys = {};
+			
+		/* Key constructor */
+		function Key(el) {
+			var code = parseInt(el.dataset['keycode']),
+				key = keys[code];
+			
+			if (key) {
+				key.add_el(el);
+				return {};
+			};
+			
+			this.els = [el];
+			this.code = code;
+			this.name = el.dataset['name'];
+			this.group = el.dataset['group'];
+			
+			keys[code] = this;
+		}
+	
+		Key.prototype = {
+			constructor : Key,
+			select : function(without_selected_keys) {
+				for (var i = 0, c = this.els.length; i < c; i++) {
+					this.els[i].classList.add('selected');
+				};
+				
+				if (!without_selected_keys) {
+					selected_keys.add(this);
+				};
+			},
+			deselect : function(without_selected_keys) {
+				for (var i = 0, c = this.els.length; i < c; i++) {
+					this.els[i].classList.remove('selected');
+				};
+				
+				if (!without_selected_keys) {
+					selected_keys.remove(this);
+				};
+			},
+			toggle : function(without_selected_keys) {
+				if (this.els[0].classList.contains('selected')) {
+					this.deselect(without_selected_keys);
+				} else {
+					this.select(without_selected_keys);
+				};
+			},
+			/* config only for this key */
+			get_config : function(width) {
+				var spaces = '';
+				
+				if (width) {
+					for (var i = 0; i < width - this.name.length; i++) {
+						spaces += '&nbsp;';
+					};
+				};
+				
+				return this.name.toUpperCase() + spaces + ' : ' + this.code;
+			},
+			/* For 2 keys with one code, for example, shift key */
+			add_el : function(el) {
+				this.els.push(el);
+			}
 		};
-
-	var app = (function() {
-		var events = {};
+		
+		for(var i = 0, len = keys_els.length; i < len; i++) {
+			new Key(keys_els[i]);
+		};
+			
+		// Select keys by click
+		el.addEventListener('click', function(e) {
+			var parent = e.target;
+	
+			while(parent) {
+				if(parent.classList.contains('key')) {
+					keys[parent.dataset['keycode']].toggle();
+	
+					break;
+				};
+				
+				if(parent === el) {
+					break;
+				};
+	
+				parent = parent.parentNode;
+			};
+				
+		}, false);
+		
+		/* Show keyCodes switcher */
+		show_codes.checked = false;
+		show_codes.addEventListener('change', function(e) {
+			if (show_codes.checked) {
+				el.classList.add('with_codes');
+			} else {
+				el.classList.remove('with_codes');
+			};
+		}, false);
 		
 		return {
-			on : function(event_name, callback) {
-				var event_callbacks = events[events_name];
-				
-				if(!event_callbacks) {
-					event_callbacks = [];
-				}
-				
-				event_callbacks.push(callback);
-			},
-			off : function(event_name, callback) {
-				var event_callbacks = events[events_name];
-				
-				if(!event_callbacks) {
-					return;
-				}
-				
-				var index = events_callback.indexOf(callback);
-				
-				if (index >= 0) {
-					events_callback.splice(index, 1);
-				}
-			},
-			run : function(event_name, data) {
-				var callbacks = events[event_name];
-				
-				if (!callbacks || !callbacks.length) {
-					return;
-				}
-				
-				for (var i = 0, c = callbacks.length; i < c; i++) {
-					callbacks[i](data);
-				}
-			}
+			
 		};
 	})();
 	
-	var pressed_keys = (function(){
+	/* Selected keys */
+	var selected_keys = (function(){
 		var keys = [];
 		
 		return {
@@ -68,7 +188,7 @@ var keysConfig = (function() {
 				
 				if (index >= 0) {
 					return;
-				}
+				};
 				
 				keys.push(key);
 			},
@@ -89,16 +209,70 @@ var keysConfig = (function() {
 				keys.length = 0;
 			},
 			generate_config : function() {
-				var result = 'var KEYS = {<br />';
+				var result = 'var KEYS = {<br />',
+					max_code_name_length = 0,
+					arr;
 				
-				for (var i = 0, len = keys.length, last = len - 1; i < len; i++) {
+				switch (settings.sort_by) {
+					case 0:
+						arr = keys.sort(function(a, b) {
+							if (a.group > b.group) {
+								return 1;
+							};
+							
+							if (a.group === b.group) {
+								/* F-group keys - sort by numbers */
+								if (a.group === 'f') {
+									
+									if (parseInt(a.name.replace('F', '')) > parseInt(b.name.replace('F', ''))) {
+										return 1;
+									};
+									
+									return -1;
+								};
+								
+								if (a.name > b.name) {
+									return 1;
+								};
+							};
+							
+							return -1;
+						});
+						
+						break;
+					
+					case 1:
+						arr = keys;
+						break;
+					
+					case 2:
+						arr = keys.sort(function(a, b) {
+							if (a.code > b.code) {
+								return 1;
+							};
+							
+							return -1;
+						});
+						
+						break;
+				};
+				
+				if (settings.columns) {
+					for (var i = 0, len = keys.length; i < len; i++) {
+						if (max_code_name_length < keys[i].name.length) {
+							max_code_name_length = keys[i].name.length;
+						};
+					};
+				};
+		
+				for (var i = 0, len = arr.length, last = len - 1; i < len; i++) {
 					result += '&nbsp;&nbsp;&nbsp;&nbsp;'
-						+ keys[i].get_config();
+						+ arr[i].get_config(settings.columns ? max_code_name_length : null);
 						
 					if (i !== last) {
 						result += ',<br />';
-					}
-				}
+					};
+				};
 				
 				result += '<br />};';
 				
@@ -107,128 +281,49 @@ var keysConfig = (function() {
 		}
 	})();
 
-	/* Utilities */
-    var utils = {
-		id : function (str) {
-			return document.getElementById(str);
-		},
-        hide : function(node) {
-            node.style.display = 'none';
-			
-			return this;
-        },
-        show : function(node) {
-            node.style.display = 'block';
-			
-			return this;
-        },
-		foreach : function(arr, func) {
-			for(var i = 0, count = arr.length; i < count; i++) {
-				func(arr[i], i);
-			}
-		},
-		foreachReverse : function(arr, func) {
-			for(var i = arr.length - 1; i >= 0; i--) {
-				func(arr[i], i);
-			}
-		},
-		debug : (function() {
-			var output = document.getElementById('debug');
-			return function() {
-				output.innerHTML = [].join.call(arguments, ' ');
-			}
-		})(),
-		stopEvent : function(e) {
-			e.stopPropagation();
-			e.preventDefault();
-			
-			return this;
-		},
-		extend : function(obj, options) {
-			var target = {};
-			
-			for (name in obj) {
-				if(obj.hasOwnProperty(name)) {
-					target[name] = options[name] ? options[name] : obj[name];
-				}
-			}
-			
-			return target;
-		}
-	};
-
-	/* Key constructor */
-	function Key(el) {
-		this.el = el;
-		this.code = el.dataset['keycode'];
-		this.name = el.dataset['name'];
-	}
-
-	Key.prototype = {
-		constructor : Key,
-
-		select : function(without_pressed_keys) {
-			this.el.classList.add('selected');
-			if (!without_pressed_keys) {
-				pressed_keys.add(this);
-			};
-		},
-		deselect : function(without_pressed_keys) {
-			this.el.classList.remove('selected');
-			if (!without_pressed_keys) {
-				pressed_keys.remove(this);
-			}
-		},
-		toggle : function(without_pressed_keys) {
-			if (this.el.classList.contains('selected')) {
-				this.deselect(without_pressed_keys);
-			} else {
-				this.select(without_pressed_keys);
-			}
-		},
-		
-		get_config : function() {
-			return this.name.toUpperCase() + ' : ' + this.code;
-		}
-	};
-
-	for(var i = 0, len = keys_els.length; i < len; i++) {
-		keys.push(new Key(keys_els[i]));
-		keys_els[i].dataset['id'] = i;
-	}
-
 	/* Buttons and actions */
 	var buttons = (function() {
 		var all = utils.id('nav').getElementsByTagName('li'),
 			clear = utils.id('clear_button'),
-			generate = utils.id('generate_button'),
+			settings = utils.id('settings_button'),
+			get_config = utils.id('get_config_button'),
 			show_help = utils.id('help_button');
 		
 		function onClearButtonClick(e) {
-			// Clear all
+			// Deselect all keys
 			if (confirm('Clear all?')) {
-				pressed_keys.clear();
-			}
+				selected_keys.clear();
+				code.hide();
+			};
 			
 			e.preventDefault();
 		};
 		
-		function onGenerateButtonClick(e) {
-			// Generate html code only
+		function onGetConfigButtonClick(e) {
+			// JS config code
             code.print();
 			
 			e.preventDefault();
 		};
 		
 		function onShowHelpButtonClick(e) {
+			// Help block
 			help.show();
 			
 			e.preventDefault();
 		};
 		
+		function onShowSettingsFormButtonClick(e) {
+			// Settings form
+			settings_form.show();
+			
+			e.preventDefault();
+		};
+		
 		clear.addEventListener('click', onClearButtonClick, false);
-		generate.addEventListener('click', onGenerateButtonClick, false);
+		get_config.addEventListener('click', onGetConfigButtonClick, false);
 		show_help.addEventListener('click', onShowHelpButtonClick, false);
+		settings.addEventListener('click', onShowSettingsFormButtonClick, false);
 	})();
 
 	/* Help block */
@@ -257,7 +352,7 @@ var keysConfig = (function() {
 		};	
 	})();
 	
-	/* For html code of keys config */
+	/* For js code of keys config */
 	var code = (function(){
 		var block = utils.id('code'),
 			content = utils.id('code_content'),
@@ -270,7 +365,7 @@ var keysConfig = (function() {
 			
 		return {
 			print: function() {
-				content.innerHTML = pressed_keys.generate_config();
+				content.innerHTML = selected_keys.generate_config();
 				utils.show(block);
 			},
 			hide: function() {
@@ -278,25 +373,78 @@ var keysConfig = (function() {
 			}
 		};
 	})();
-
-
-
-	keyboard.addEventListener('click', function(e) {
-		var parent = e.target;
-
-		while(parent) {
-			if(parent.classList.contains('key')) {
-				keys[parent.dataset['id']].toggle();
-
-				break;
-			}
+	
+	/* Settings form */
+	var settings_form = (function() {
+		var form = utils.id('settings_form'),
+			overlay = utils.id('overlay'),
+			/* 2 parameters - sort and columns */
+			inputs = {
+				sort : [
+					utils.id('sort_alph'),
+					utils.id('sort_add'),
+					utils.id('sort_codes')
+				],
+				columns : utils.id('with_columns')
+			},
+			save_button = form.querySelector('.save_button'),
+			close_button = form.querySelector('.close_button');
+		
+		function show() {
+			load();
 			
-			if(parent === keyboard) {
-				break;
-			}
-
-			parent = parent.parentNode;
+			utils.show(form);
+			utils.show(overlay);
 		}
+		
+		function load() {
+			switch (settings.sort_by) {
+				case 1:
+					inputs.sort[0].checked = false;
+					inputs.sort[1].checked = true;
+					inputs.sort[2].checked = false;
+					break;
+				
+				case 2:
+					inputs.sort[0].checked = false;
+					inputs.sort[1].checked = false;
+					inputs.sort[2].checked = true;
+					break;
+				
+				default:
+					inputs.sort[0].checked = true;
+					inputs.sort[1].checked = false;
+					inputs.sort[2].checked = false;
+			};
 			
-	}, false);
+			inputs.columns.checked = settings.columns;
+		}
+		
+		function hide() {
+			utils.hide(form);
+			utils.hide(overlay);
+		}
+		
+		function save(e) {
+			e.preventDefault();
+			
+			settings.sort_by = inputs.sort[1].checked ? 1 : inputs.sort[2].checked ? 2 : 0;
+			
+			settings.columns = inputs.columns.checked;
+			
+			hide();
+		}
+		
+		overlay.addEventListener('click', hide, false);
+		
+		close_button.addEventListener('click', hide, false);
+		
+		save_button.addEventListener('click', save, false);
+		
+		return {
+			show : show,
+			hide : hide
+		};
+	})();
+	
 })();

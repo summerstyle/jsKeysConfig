@@ -1,3 +1,13 @@
+/*
+ * jsKeysConfig generator
+ * http://github.com/summerstyle/jsKeysConfig
+ * 
+ * Copyright 2014 Vera Lobacheva (http://summerstyle.ru)
+ * Released under the GPL3 (GPL3.txt)
+ * 
+ * Sun April 20 2014 20:25:15 GMT+0400
+ */
+
 html, body, div, span, applet, object, h1, h2, h3, h4, h5, h6, p, a, em, img, strong, ol, ul, li, dl, dd, dt, form, label, input, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video  {
     margin: 0;
     padding: 0;
@@ -132,14 +142,35 @@ a:link, a:visited {
     padding: 5px 0;
     background: #F00;
 }
-#keys {
-    padding: 15px 15px 5px;
+#keyboard {
+	position: relative;
+    padding: 15px 0 5px 15px;
     background-color: #F9F9F9;
 	background-image: -moz-linear-gradient(top, #F9F9F9, #FAFAFA);
     border-radius: 10px;
-    width: 800px;
+    width: 855px;
     margin: 0 auto;
-    box-shadow: rgba(0, 0, 0, 0.01) 0 -1px 5px 5px, rgba(0, 0, 0, 0.1) 0 -1px 1px 1px, rgba(0, 0, 0, 0.1) 0 0 1px 1px, rgba(255, 255, 255, 0.3) 0 0 3px 0 inset;
+	box-shadow: rgba(0, 0, 0, 0.01) 0 -1px 5px 5px,
+		rgba(0, 0, 0, 0.05) 0 -1px 3px 1px,
+		rgba(0, 0, 0, 0.1) 0 -2px 1px 0,
+		rgba(0, 0, 0, 0.1) 0 0 1px 0,
+		rgba(255, 255, 255, 0.5) 0 0 10px 0 inset;
+}
+#kb_indicators {
+	position: absolute;
+	left: 730px;
+	top: 20px;
+	color: #666;
+	line-height: 1;
+	font-size: 12px;
+	font-family: monospace;
+}
+#kb_indicators input {
+	vertical-align: middle;
+	margin-right: 2px;
+}
+#kb_indicators label {
+	cursor: pointer;
 }
 .row {
 	margin-bottom: 10px;
@@ -157,21 +188,34 @@ a:link, a:visited {
     line-height: 30px;
     text-align: center;
     cursor: pointer;
+	position: relative;
     color: rgba(0, 0, 0, 0.5);
 	text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
     transition: color 0.5s, box-shadow 0.5s, background 0.5s;
 }
+.key.column1_5 {
+    width: 53px;
+}
 .key.column2 {
     width: 76px;
 }
+.key.column2_5 {
+    width: 99px;
+}
 .key.column3 {
-    width: 128px;
+    width: 122px;
 }
 .key.column4 {
     width: 174px;
 }
 .key.column5 {
-    width: 220px;
+    width: 214px;
+}
+.key.column6 {
+    width: 260px;
+}
+.key.column6 {
+    width: 306px;
 }
 .key:active {
     box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 1px, rgba(255, 255, 255, 1) 0 1px 1px 0 inset;
@@ -192,6 +236,42 @@ a:link, a:visited {
 .key.right {
 	text-align: right;
 }
+.key.with_margin {
+	margin-right: 33px;
+}
+.key.with_left_space {
+	margin-left: 46px;
+}
+.key > .keyname {
+	position: absolute;
+	bottom: 100%;
+	left: 0;
+	background: #FFF;
+	color: #000;
+	box-shadow: rgba(0,0,0,0.7) 0 -1px 2px;
+	padding: 2px 5px;
+	font-size: 10px;
+	line-height: 1;
+	display: none;
+}
+.key:hover > .keyname {
+	display: block;
+}
+.key > .keycode {
+	position: absolute;
+	background: #777;
+	color: #FFF;
+	font-size: 10px;
+	line-height: 1;
+	border-radius: 2px;
+	right: -1px;
+	bottom: -1px;
+	padding: 1px 2px;
+	display: none;
+}
+.with_codes .key > .keycode {
+	display: block;
+}
 .main {
 	font-size: 11px;
 	display: block;
@@ -201,7 +281,7 @@ a:link, a:visited {
 	display: block;
 }
 .first {
-	margin-bottom: 15px;
+	margin-bottom: 20px;
 }
 .first .key {
 	height: 20px !important;
@@ -294,19 +374,32 @@ a:link, a:visited {
 }
 
 
-#settings {
+#settings_form {
     display: none;
-    width: 400px;
+    width: 300px;
+	padding: 20px;
     border-radius: 3px;
     background: #FFF;
     position: absolute;
     top: 35px;
     left: 50%;
-    margin-left: -200px;
+    margin-left: -170px;
     z-index: 1003;
     box-shadow: rgba(0,0,0,0.2) 0 0 2px 2px;
 }
-#settings .close_button {
+#settings_form h5 {
+	margin-bottom: 20px;
+}
+#settings_form section {
+	margin-bottom: 20px;
+}
+#settings_form .checkboxes {
+	margin-top: 10px;
+}
+#settings_form .checkboxes > li {
+	margin-bottom: 5px;
+}
+#settings_form .close_button {
     background: #000 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAACbgAAAm4Bt/774AAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAABKSURBVAiZdc2xDYAwAAPBA0ViiQxKR6hgCMZjCSpTEAkavnxL7yHJgRPNQ0MtXS6Y+jBjlUSSLS9bEqMfSm/O2D+pq6Bi/ZxfqDfkbiIp0Zzd1AAAAABJRU5ErkJggg==) 50% 50% no-repeat;
     box-shadow: 0 0 1px #EEE inset;
     border-radius: 2px;
