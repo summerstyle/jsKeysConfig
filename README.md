@@ -25,9 +25,11 @@ and copy it in your js-code
 
 4. Use config
 -------------
+```javascript
 switch (e.keyCode) {
     case KEYS.ENTER:
         // code
     case KEYS.DELETE:
         // code
 }
+```
