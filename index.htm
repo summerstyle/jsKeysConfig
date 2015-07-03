@@ -1,600 +1,600 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>jsKeysConfig generator</title>
-	<meta charset="utf-8" />
-	<link href="main.css" type="text/css" rel="stylesheet" />
+    <title>jsKeysConfig generator</title>
+    <meta charset="utf-8" />
+    <link href="main.css" type="text/css" rel="stylesheet" />
     <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
-	<!--
-		jsKeysConfig generator
-		http://github.com/summerstyle/jsKeysConfig
-		
-		Copyright 2014 Vera Lobacheva (http://summerstyle.ru)
-		Released under the GPL3 (GPL3.txt)
-		
-		Sun April 20 2014 20:25:15 GMT+0400
-	-->
+    <!--
+        jsKeysConfig generator
+        http://github.com/summerstyle/jsKeysConfig
+        
+        Copyright 2014 Vera Lobacheva (http://summerstyle.ru)
+        Released under the GPL3 (GPL3.txt)
+        
+        Sun April 20 2014 20:25:15 GMT+0400
+    -->
 </head>
 <body>
 <noscript>
-	<div id="noscript">
-		Please, enable javascript in your browser
-	</div>
+    <div id="noscript">
+        Please, enable javascript in your browser
+    </div>
 </noscript>
 
 <header id="header">
-	<h1 id="logo">
-		<a href="http://github.com/summerstyle/keysconfig">
-			<img alt="jsKeysConfig" src="data:image/png;base64,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" />
-		</a>                                    
-	</h1>
-	<nav id="nav" class="clearfix">
-		<ul>
-			<li id="get_config_button"><a href="#">get config</a></li>
-			<li id="settings_button"><a href="#">settings</a></li>
-			<li id="clear_button"><a href="#">clear</a></li>
-			<li id="help_button"><a href="#">?</a></li>
-		</ul>
-	</nav>
-	<div id="coords"></div>
-	<div id="debug"></div>
+    <h1 id="logo">
+        <a href="http://github.com/summerstyle/keysconfig">
+            <img alt="jsKeysConfig" src="data:image/png;base64,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" />
+        </a>                                    
+    </h1>
+    <nav id="nav" class="clearfix">
+        <ul>
+            <li id="get_config_button"><a href="#">get config</a></li>
+            <li id="settings_button"><a href="#">settings</a></li>
+            <li id="clear_button"><a href="#">clear</a></li>
+            <li id="help_button"><a href="#">?</a></li>
+        </ul>
+    </nav>
+    <div id="coords"></div>
+    <div id="debug"></div>
 </header>
 
 <div id="wrapper">
 
-	<!-- Keyboard -->
-	<div id="keyboard">
-		<div id="kb_indicators">
-			<label>
-				<input type="checkbox" id="show_codes" /> 
-				show keyCodes
-			</label>
-		</div>
-		<ul id="keys" class="clearfix">
-			<li class="row first">
-				<ul class="keys clearfix">
-					<li data-keycode="27" data-name="ESC" data-group="meta" class="key named column1_5 with_margin">
-						Esc
-						
-						<span class="keyname">ESC</span>
-						<span class="keycode">27</span>
-					</li>
-					
-					<li data-keycode="112" data-name="F1" data-group="f" class="key named">
-						F1
-						
-						<span class="keyname">F1</span>
-						<span class="keycode">112</span>
-					</li>
-					<li data-keycode="113" data-name="F2" data-group="f" class="key named">
-						F2
-						
-						<span class="keyname">F2</span>
-						<span class="keycode">113</span>
-					</li>
-					<li data-keycode="114" data-name="F3" data-group="f" class="key named">
-						F3
-						
-						<span class="keyname">F3</span>
-						<span class="keycode">114</span>
-					</li>
-					<li data-keycode="115" data-name="F4" data-group="f" class="key named with_margin">
-						F4
-						
-						<span class="keyname">F4</span>
-						<span class="keycode">115</span>
-					</li>
-					
-					<li data-keycode="116" data-name="F5" data-group="f" class="key named">
-						F5
-						
-						<span class="keyname">F5</span>
-						<span class="keycode">116</span>
-					</li>
-					<li data-keycode="117" data-name="F6" data-group="f" class="key named">
-						F6
-						
-						<span class="keyname">F6</span>
-						<span class="keycode">117</span>
-					</li>
-					<li data-keycode="118" data-name="F7" data-group="f" class="key named">
-						F7
-						
-						<span class="keyname">F7</span>
-						<span class="keycode">118</span>
-					</li>
-					<li data-keycode="119" data-name="F8" data-group="f" class="key named with_margin">
-						F8
-						
-						<span class="keyname">F8</span>
-						<span class="keycode">119</span>
-					</li>
-					
-					<li data-keycode="120" data-name="F9" data-group="f" class="key named">
-						F9
-						
-						<span class="keyname">F9</span>
-						<span class="keycode">120</span>
-					</li>
-					<li data-keycode="121" data-name="F10" data-group="f" class="key named">
-						F10
-						
-						<span class="keyname">F10</span>
-						<span class="keycode">121</span>
-					</li>
-					<li data-keycode="122" data-name="F11" data-group="f" class="key named">
-						F11
-						
-						<span class="keyname">F11</span>
-						<span class="keycode">122</span>
-					</li>
-					<li data-keycode="123" data-name="F12" data-group="f" class="key named">
-						F12
-						
-						<span class="keyname">F12</span>
-						<span class="keycode">123</span>
-					</li>
-				</ul>
-			</li>
-			<li class="row">
-				<ul class="keys clearfix">    
-					<li data-keycode="192" data-name="TILDE" data-group="spec" class="key double">
-						<span class="shift">~</span>
-						<span class="main">`</span>
-						
-						<span class="keyname">TILDE</span>
-						<span class="keycode">192</span>
-					</li>
-					<li data-keycode="49" data-name="DIGIT_1" data-group="digits" class="key double">
-						<span class="shift">!</span>
-						<span class="main">1</span>
-						
-						<span class="keyname">DIGIT_1</span>
-						<span class="keycode">49</span>
-					</li>
-					<li data-keycode="50" data-name="DIGIT_2" data-group="digits" class="key double">
-						<span class="shift">@</span>
-						<span class="main">2</span>
-						
-						<span class="keyname">DIGIT_2</span>
-						<span class="keycode">50</span>
-					</li>
-					<li data-keycode="51" data-name="DIGIT_3" data-group="digits" class="key double">
-						<span class="shift">#</span>
-						<span class="main">3</span>
-						
-						<span class="keyname">DIGIT_3</span>
-						<span class="keycode">51</span>
-					</li>
-					<li data-keycode="52" data-name="DIGIT_4" data-group="digits" class="key double">
-						<span class="shift">$</span>
-						<span class="main">4</span>
-						
-						<span class="keyname">DIGIT_4</span>
-						<span class="keycode">52</span>
-					</li>
-					<li data-keycode="53" data-name="DIGIT_5" data-group="digits" class="key double">
-						<span class="shift">%</span>
-						<span class="main">5</span>
-						
-						<span class="keyname">DIGIT_5</span>
-						<span class="keycode">53</span>
-					</li>
-					<li data-keycode="54" data-name="DIGIT_6" data-group="digits" class="key double">
-						<span class="shift">^</span>
-						<span class="main">6</span>
-						
-						<span class="keyname">DIGIT_6</span>
-						<span class="keycode">54</span>
-					</li>
-					<li data-keycode="55" data-name="DIGIT_7" data-group="digits" class="key double">
-						<span class="shift">&</span>
-						<span class="main">7</span>
-						
-						<span class="keyname">DIGIT_7</span>
-						<span class="keycode">55</span>
-					</li>
-					<li data-keycode="56" data-name="DIGIT_8" data-group="digits" class="key double">
-						<span class="shift">*</span>
-						<span class="main">8</span>
-						
-						<span class="keyname">DIGIT_8</span>
-						<span class="keycode">56</span>
-					</li>
-					<li data-keycode="57" data-name="DIGIT_9" data-group="digits" class="key double">
-						<span class="shift">(</span>
-						<span class="main">9</span>
-						
-						<span class="keyname">DIGIT_9</span>
-						<span class="keycode">56</span>
-					</li>
-					<li data-keycode="48" data-name="DIGIT_0" data-group="digits" class="key double">
-						<span class="shift">)</span>
-						<span class="main">0</span>
-						
-						<span class="keyname">DIGIT_0</span>
-						<span class="keycode">48</span>
-					</li>
-					<li data-keycode="173" data-name="MINUS" data-group="spec" class="key double">
-						<span class="shift">_</span>
-						<span class="main">-</span>
-						
-						<span class="keyname">MINUS</span>
-						<span class="keycode">173</span>
-					</li>
-					<li data-keycode="61" data-name="EQUALS" data-group="spec" class="key double">
-						<span class="shift">+</span>
-						<span class="main">=</span>
-						
-						<span class="keyname">EQUALS</span>
-						<span class="keycode">61</span>
-					</li>
-					<li data-keycode="8" data-name="BACKSPACE" data-group="meta" class="key named right with_margin column2">
-						Backspace
-						
-						<span class="keyname">BACKSPACE</span>
-						<span class="keycode">8</span>
-					</li>
-					
-					<li data-keycode="36" data-name="HOME" data-group="meta" class="key named">
-						Home
-						
-						<span class="keyname">HOME</span>
-						<span class="keycode">36</span>
-					</li>
-					<li data-keycode="45" data-name="INSERT" data-group="meta" class="key named">
-						Insert
-					
-						<span class="keyname">INSERT</span>
-						<span class="keycode">45</span>
-					</li>
-					<li data-keycode="33" data-name="PAGE_UP" data-group="meta" class="key named">
-						PgUp
-					
-						<span class="keyname">PAGE_UP</span>
-						<span class="keycode">33</span>
-					</li>
-				</ul>
-			</li>
-			<li class="row">
-				<ul class="keys clearfix">
-					<li data-keycode="9" data-name="TAB" data-group="meta" class="key named column1_5">
-						Tab
-						
-						<span class="keyname">TAB</span>
-						<span class="keycode">9</span>
-					</li>
-					<li data-keycode="81" data-name="Q" data-group="letters" class="key">
-						Q
-						
-						<span class="keyname">Q</span>
-						<span class="keycode">81</span>
-					</li>
-					<li data-keycode="87" data-name="W" data-group="letters" class="key">
-						W
-						
-						<span class="keyname">W</span>
-						<span class="keycode">87</span>
-					</li>
-					<li data-keycode="69" data-name="E" data-group="letters" class="key">
-						E
-						
-						<span class="keyname">E</span>
-						<span class="keycode">69</span>
-					</li>
-					<li data-keycode="82" data-name="R" data-group="letters" class="key">
-						R
-						
-						<span class="keyname">R</span>
-						<span class="keycode">82</span>
-					</li>
-					<li data-keycode="84" data-name="T" data-group="letters" class="key">
-						T
-						
-						<span class="keyname">T</span>
-						<span class="keycode">84</span>
-					</li>
-					<li data-keycode="89" data-name="Y" data-group="letters" class="key">
-						Y
-						
-						<span class="keyname">Y</span>
-						<span class="keycode">89</span>
-					</li>
-					<li data-keycode="85" data-name="U" data-group="letters" class="key">
-						U
-						
-						<span class="keyname">U</span>
-						<span class="keycode">85</span>
-					</li>
-					<li data-keycode="73" data-name="I" data-group="letters" class="key">
-						I
-						
-						<span class="keyname">I</span>
-						<span class="keycode">73</span>
-					</li>
-					<li data-keycode="79" data-name="O" data-group="letters" class="key">
-						O
-						
-						<span class="keyname">O</span>
-						<span class="keycode">79</span>
-					</li>
-					<li data-keycode="80" data-name="P" data-group="letters" class="key">
-						P
-						
-						<span class="keyname">P</span>
-						<span class="keycode">80</span>
-					</li>
-					<li data-keycode="219" data-name="LEFT_BRACKET" data-group="spec" class="key double">
-						<span class="shift">{</span>
-						<span class="main">[</span>
-						
-						<span class="keyname">LEFT_BRACKET</span>
-						<span class="keycode">219</span>
-					</li>
-					<li data-keycode="221" data-name="RIGHT_BRACKET" data-group="spec" class="key double">
-						<span class="shift">}</span>
-						<span class="main">]</span>
-						
-						<span class="keyname">RIGHT_BRACKET</span>
-						<span class="keycode">221</span>
-					</li>
-					<li data-keycode="220" data-name="BACKSLASH" data-group="spec" class="key double column1_5 with_margin">
-						<span class="shift">|</span>
-						<span class="main">\</span>
-						
-						<span class="keyname">BACKSLASH</span>
-						<span class="keycode">220</span>
-					</li>
-					
-					<li data-keycode="35" data-name="END" data-group="meta" class="key named">
-						End
-					
-						<span class="keyname">END</span>
-						<span class="keycode">35</span>
-					</li>
-					<li data-keycode="46" data-name="DELETE" data-group="meta" class="key named">
-						Delete
-					
-						<span class="keyname">DELETE</span>
-						<span class="keycode">46</span>
-					</li>
-					<li data-keycode="34" data-name="PAGE_DOWN" data-group="meta" class="key named">
-						PgDn
-					
-						<span class="keyname">PAGE_DOWN</span>
-						<span class="keycode">34</span>
-					</li>
-				</ul>
-			</li>
-			<li class="row">
-				<ul class="keys clearfix">
-					<li data-keycode="20" data-name="CAPSLOCK" data-group="meta" class="key named column2">
-						CapsLock
-						
-						<span class="keyname">CAPSLOCK</span>
-						<span class="keycode">20</span>
-					</li>
-					<li data-keycode="65" data-name="A" data-group="letters" class="key">
-						A
-						
-						<span class="keyname">A</span>
-						<span class="keycode">65</span>
-					</li>
-					<li data-keycode="83" data-name="S" data-group="letters" class="key">
-						S
-						
-						<span class="keyname">S</span>
-						<span class="keycode">83</span>
-					</li>
-					<li data-keycode="68" data-name="D" data-group="letters" class="key">
-						D
-						
-						<span class="keyname">D</span>
-						<span class="keycode">68</span>
-					</li>
-					<li data-keycode="70" data-name="F" data-group="letters" class="key">
-						F
-						
-						<span class="keyname">F</span>
-						<span class="keycode">70</span>
-					</li>
-					<li data-keycode="71" data-name="G" data-group="letters" class="key">
-						G
-						
-						<span class="keyname">G</span>
-						<span class="keycode">71</span>
-					</li>
-					<li data-keycode="72" data-name="H" data-group="letters" class="key">
-						H
-						
-						<span class="keyname">H</span>
-						<span class="keycode">72</span>
-					</li>
-					<li data-keycode="74" data-name="J" data-group="letters" class="key">
-						J
-					
-						<span class="keyname">J</span>
-						<span class="keycode">74</span>
-					</li>
-					<li data-keycode="75" data-name="K" data-group="letters" class="key">
-						K
-						
-						<span class="keyname">K</span>
-						<span class="keycode">75</span>
-					</li>
-					<li data-keycode="76" data-name="L" data-group="letters" class="key">
-						L
-						
-						<span class="keyname">L</span>
-						<span class="keycode">76</span>
-					</li>
-					<li data-keycode="59" data-name="SEMICOLON" data-group="spec" class="key double">
-						<span class="shift">:</span>
-						<span class="main">;</span>
-						
-						<span class="keyname">SEMICOLON</span>
-						<span class="keycode">59</span>
-					</li>
-					<li data-keycode="222" data-name="APOSTROPHE" data-group="spec" class="key double">
-						<span class="shift">"</span>
-						<span class="main">'</span>
-						
-						<span class="keyname">APOSTROPHE</span>
-						<span class="keycode">222</span>
-					</li>
-					<li data-keycode="13" data-name="ENTER" data-group="meta" class="key named right column2">
-						Enter
-						
-						<span class="keyname">ENTER</span>
-						<span class="keycode">13</span>
-					</li>
-				</ul>
-			</li>
-			<li class="row">
-				<ul class="keys clearfix">
-					<li data-keycode="16" data-name="SHIFT" data-group="meta" class="key named column2_5">
-						Shift
-					
-						<span class="keyname">SHIFT</span>
-						<span class="keycode">16</span>
-					</li>
-					<li data-keycode="90" data-name="Z" data-group="letters" class="key">
-						Z
-					
-						<span class="keyname">Z</span>
-						<span class="keycode">90</span>
-					</li>
-					<li data-keycode="88" data-name="X" data-group="letters" class="key">
-						X
-						
-						<span class="keyname">X</span>
-						<span class="keycode">88</span>
-					</li>
-					<li data-keycode="67" data-name="C" data-group="letters" class="key">
-						C
-					
-						<span class="keyname">C</span>
-						<span class="keycode">67</span>
-					</li>
-					<li data-keycode="86" data-name="V" data-group="letters" class="key">
-						V
-						
-						<span class="keyname">V</span>
-						<span class="keycode">86</span>
-					</li>
-					<li data-keycode="66" data-name="B" data-group="letters" class="key">
-						B
-						
-						<span class="keyname">B</span>
-						<span class="keycode">66</span>
-					</li>
-					<li data-keycode="78" data-name="N" data-group="letters" class="key">
-						N
-						
-						<span class="keyname">N</span>
-						<span class="keycode">78</span>
-					</li>
-					<li data-keycode="77" data-name="M" data-group="letters" class="key">
-						M
-		
-						<span class="keyname">M</span>
-						<span class="keycode">77</span>
-					</li>
-					<li data-keycode="188" data-name="COMMA" data-group="spec" class="key double">
-						<span class="main">&lt;</span>
-						<span class="shift">,</span>
-						
-						<span class="keyname">COMMA</span>
-						<span class="keycode">188</span>
-					</li>
-					<li data-keycode="190" data-name="PERIOD" data-group="spec" class="key double">
-						<span class="main">&gt;</span>
-						<span class="shift">.</span>
-						
-						<span class="keyname">PERIOD</span>
-						<span class="keycode">190</span>
-					</li>
-					<li data-keycode="191" data-name="SLASH" data-group="spec" class="key double">
-						<span class="main">?</span>
-						<span class="shift">/</span>
-						
-						<span class="keyname">SLASH</span>
-						<span class="keycode">191</span>
-					</li>
-					<li data-keycode="16" data-name="SHIFT" data-group="meta" class="key named right column2_5 with_margin">
-						Shift
-					
-						<span class="keyname">SHIFT</span>
-						<span class="keycode">16</span>
-					</li>
-					
-					<li data-keycode="38" data-name="UP_ARROW" data-group="arrows" class="key with_left_space">
-						&uarr;
-					
-						<span class="keyname">UP_ARROW</span>
-						<span class="keycode">38</span>
-					</li>
-					
-				</ul>
-			</li>
-			<li class="row">
-				<ul class="keys clearfix">
-					<li data-keycode="17" data-name="CTRL" data-group="meta" class="key named column2">
-						Ctrl
-					
-						<span class="keyname">CTRL</span>
-						<span class="keycode">17</span>
-					</li>
-					<li data-keycode="91" data-name="WIN" data-group="meta" class="key named">
-						Win
-					
-						<span class="keyname">WIN</span>
-						<span class="keycode">91</span>
-					</li>
-					<li data-keycode="18" data-name="ALT" data-group="meta" class="key named column1_5">
-						Alt
-					
-						<span class="keyname">ALT</span>
-						<span class="keycode">18</span>
-					</li>
-					<li data-keycode="32" data-name="SPACE" data-group="meta" class="key column6">
-						<span class="keyname">SPACE</span>
-						<span class="keycode">32</span>
-					</li>
-					<li data-keycode="18" data-name="ALT" data-group="meta" class="key named right column1_5">
-						Alt
-					
-						<span class="keyname">ALT</span>
-						<span class="keycode">18</span>
-					</li>
-					<li data-keycode="17" data-name="CTRL" data-group="meta" class="key named right column2 with_margin">
-						Ctrl
-					
-						<span class="keyname">CTRL</span>
-						<span class="keycode">17</span>
-					</li>
-					<li data-keycode="37" data-name="LEFT_ARROW" data-group="arrows" class="key">
-						&larr;
-					
-						<span class="keyname">LEFT_ARROW</span>
-						<span class="keycode">37</span>
-					</li>
-					<li data-keycode="40" data-name="DOWN_ARROW" data-group="arrows" class="key">
-						&darr;
-					
-						<span class="keyname">DOWN_ARROW</span>
-						<span class="keycode">40</span>
-					</li>
-					<li data-keycode="39" data-name="RIGHT_ARROW" data-group="arrows" class="key">
-						&rarr;
-					
-						<span class="keyname">RIGHT_ARROW</span>
-						<span class="keycode">39</span>
-					</li>
-				</ul>
-			</li>
-		</ul>
-	</div>
+    <!-- Keyboard -->
+    <div id="keyboard">
+        <div id="kb_indicators">
+            <label>
+                <input type="checkbox" id="show_codes" /> 
+                show keyCodes
+            </label>
+        </div>
+        <ul id="keys" class="clearfix">
+            <li class="row first">
+                <ul class="keys clearfix">
+                    <li data-keycode="27" data-name="ESC" data-group="meta" class="key named column1_5 with_margin">
+                        Esc
+                        
+                        <span class="keyname">ESC</span>
+                        <span class="keycode">27</span>
+                    </li>
+                    
+                    <li data-keycode="112" data-name="F1" data-group="f" class="key named">
+                        F1
+                        
+                        <span class="keyname">F1</span>
+                        <span class="keycode">112</span>
+                    </li>
+                    <li data-keycode="113" data-name="F2" data-group="f" class="key named">
+                        F2
+                        
+                        <span class="keyname">F2</span>
+                        <span class="keycode">113</span>
+                    </li>
+                    <li data-keycode="114" data-name="F3" data-group="f" class="key named">
+                        F3
+                        
+                        <span class="keyname">F3</span>
+                        <span class="keycode">114</span>
+                    </li>
+                    <li data-keycode="115" data-name="F4" data-group="f" class="key named with_margin">
+                        F4
+                        
+                        <span class="keyname">F4</span>
+                        <span class="keycode">115</span>
+                    </li>
+                    
+                    <li data-keycode="116" data-name="F5" data-group="f" class="key named">
+                        F5
+                        
+                        <span class="keyname">F5</span>
+                        <span class="keycode">116</span>
+                    </li>
+                    <li data-keycode="117" data-name="F6" data-group="f" class="key named">
+                        F6
+                        
+                        <span class="keyname">F6</span>
+                        <span class="keycode">117</span>
+                    </li>
+                    <li data-keycode="118" data-name="F7" data-group="f" class="key named">
+                        F7
+                        
+                        <span class="keyname">F7</span>
+                        <span class="keycode">118</span>
+                    </li>
+                    <li data-keycode="119" data-name="F8" data-group="f" class="key named with_margin">
+                        F8
+                        
+                        <span class="keyname">F8</span>
+                        <span class="keycode">119</span>
+                    </li>
+                    
+                    <li data-keycode="120" data-name="F9" data-group="f" class="key named">
+                        F9
+                        
+                        <span class="keyname">F9</span>
+                        <span class="keycode">120</span>
+                    </li>
+                    <li data-keycode="121" data-name="F10" data-group="f" class="key named">
+                        F10
+                        
+                        <span class="keyname">F10</span>
+                        <span class="keycode">121</span>
+                    </li>
+                    <li data-keycode="122" data-name="F11" data-group="f" class="key named">
+                        F11
+                        
+                        <span class="keyname">F11</span>
+                        <span class="keycode">122</span>
+                    </li>
+                    <li data-keycode="123" data-name="F12" data-group="f" class="key named">
+                        F12
+                        
+                        <span class="keyname">F12</span>
+                        <span class="keycode">123</span>
+                    </li>
+                </ul>
+            </li>
+            <li class="row">
+                <ul class="keys clearfix">    
+                    <li data-keycode="192" data-name="TILDE" data-group="spec" class="key double">
+                        <span class="shift">~</span>
+                        <span class="main">`</span>
+                        
+                        <span class="keyname">TILDE</span>
+                        <span class="keycode">192</span>
+                    </li>
+                    <li data-keycode="49" data-name="DIGIT_1" data-group="digits" class="key double">
+                        <span class="shift">!</span>
+                        <span class="main">1</span>
+                        
+                        <span class="keyname">DIGIT_1</span>
+                        <span class="keycode">49</span>
+                    </li>
+                    <li data-keycode="50" data-name="DIGIT_2" data-group="digits" class="key double">
+                        <span class="shift">@</span>
+                        <span class="main">2</span>
+                        
+                        <span class="keyname">DIGIT_2</span>
+                        <span class="keycode">50</span>
+                    </li>
+                    <li data-keycode="51" data-name="DIGIT_3" data-group="digits" class="key double">
+                        <span class="shift">#</span>
+                        <span class="main">3</span>
+                        
+                        <span class="keyname">DIGIT_3</span>
+                        <span class="keycode">51</span>
+                    </li>
+                    <li data-keycode="52" data-name="DIGIT_4" data-group="digits" class="key double">
+                        <span class="shift">$</span>
+                        <span class="main">4</span>
+                        
+                        <span class="keyname">DIGIT_4</span>
+                        <span class="keycode">52</span>
+                    </li>
+                    <li data-keycode="53" data-name="DIGIT_5" data-group="digits" class="key double">
+                        <span class="shift">%</span>
+                        <span class="main">5</span>
+                        
+                        <span class="keyname">DIGIT_5</span>
+                        <span class="keycode">53</span>
+                    </li>
+                    <li data-keycode="54" data-name="DIGIT_6" data-group="digits" class="key double">
+                        <span class="shift">^</span>
+                        <span class="main">6</span>
+                        
+                        <span class="keyname">DIGIT_6</span>
+                        <span class="keycode">54</span>
+                    </li>
+                    <li data-keycode="55" data-name="DIGIT_7" data-group="digits" class="key double">
+                        <span class="shift">&</span>
+                        <span class="main">7</span>
+                        
+                        <span class="keyname">DIGIT_7</span>
+                        <span class="keycode">55</span>
+                    </li>
+                    <li data-keycode="56" data-name="DIGIT_8" data-group="digits" class="key double">
+                        <span class="shift">*</span>
+                        <span class="main">8</span>
+                        
+                        <span class="keyname">DIGIT_8</span>
+                        <span class="keycode">56</span>
+                    </li>
+                    <li data-keycode="57" data-name="DIGIT_9" data-group="digits" class="key double">
+                        <span class="shift">(</span>
+                        <span class="main">9</span>
+                        
+                        <span class="keyname">DIGIT_9</span>
+                        <span class="keycode">56</span>
+                    </li>
+                    <li data-keycode="48" data-name="DIGIT_0" data-group="digits" class="key double">
+                        <span class="shift">)</span>
+                        <span class="main">0</span>
+                        
+                        <span class="keyname">DIGIT_0</span>
+                        <span class="keycode">48</span>
+                    </li>
+                    <li data-keycode="173" data-name="MINUS" data-group="spec" class="key double">
+                        <span class="shift">_</span>
+                        <span class="main">-</span>
+                        
+                        <span class="keyname">MINUS</span>
+                        <span class="keycode">173</span>
+                    </li>
+                    <li data-keycode="61" data-name="EQUALS" data-group="spec" class="key double">
+                        <span class="shift">+</span>
+                        <span class="main">=</span>
+                        
+                        <span class="keyname">EQUALS</span>
+                        <span class="keycode">61</span>
+                    </li>
+                    <li data-keycode="8" data-name="BACKSPACE" data-group="meta" class="key named right with_margin column2">
+                        Backspace
+                        
+                        <span class="keyname">BACKSPACE</span>
+                        <span class="keycode">8</span>
+                    </li>
+                    
+                    <li data-keycode="36" data-name="HOME" data-group="meta" class="key named">
+                        Home
+                        
+                        <span class="keyname">HOME</span>
+                        <span class="keycode">36</span>
+                    </li>
+                    <li data-keycode="45" data-name="INSERT" data-group="meta" class="key named">
+                        Insert
+                    
+                        <span class="keyname">INSERT</span>
+                        <span class="keycode">45</span>
+                    </li>
+                    <li data-keycode="33" data-name="PAGE_UP" data-group="meta" class="key named">
+                        PgUp
+                    
+                        <span class="keyname">PAGE_UP</span>
+                        <span class="keycode">33</span>
+                    </li>
+                </ul>
+            </li>
+            <li class="row">
+                <ul class="keys clearfix">
+                    <li data-keycode="9" data-name="TAB" data-group="meta" class="key named column1_5">
+                        Tab
+                        
+                        <span class="keyname">TAB</span>
+                        <span class="keycode">9</span>
+                    </li>
+                    <li data-keycode="81" data-name="Q" data-group="letters" class="key">
+                        Q
+                        
+                        <span class="keyname">Q</span>
+                        <span class="keycode">81</span>
+                    </li>
+                    <li data-keycode="87" data-name="W" data-group="letters" class="key">
+                        W
+                        
+                        <span class="keyname">W</span>
+                        <span class="keycode">87</span>
+                    </li>
+                    <li data-keycode="69" data-name="E" data-group="letters" class="key">
+                        E
+                        
+                        <span class="keyname">E</span>
+                        <span class="keycode">69</span>
+                    </li>
+                    <li data-keycode="82" data-name="R" data-group="letters" class="key">
+                        R
+                        
+                        <span class="keyname">R</span>
+                        <span class="keycode">82</span>
+                    </li>
+                    <li data-keycode="84" data-name="T" data-group="letters" class="key">
+                        T
+                        
+                        <span class="keyname">T</span>
+                        <span class="keycode">84</span>
+                    </li>
+                    <li data-keycode="89" data-name="Y" data-group="letters" class="key">
+                        Y
+                        
+                        <span class="keyname">Y</span>
+                        <span class="keycode">89</span>
+                    </li>
+                    <li data-keycode="85" data-name="U" data-group="letters" class="key">
+                        U
+                        
+                        <span class="keyname">U</span>
+                        <span class="keycode">85</span>
+                    </li>
+                    <li data-keycode="73" data-name="I" data-group="letters" class="key">
+                        I
+                        
+                        <span class="keyname">I</span>
+                        <span class="keycode">73</span>
+                    </li>
+                    <li data-keycode="79" data-name="O" data-group="letters" class="key">
+                        O
+                        
+                        <span class="keyname">O</span>
+                        <span class="keycode">79</span>
+                    </li>
+                    <li data-keycode="80" data-name="P" data-group="letters" class="key">
+                        P
+                        
+                        <span class="keyname">P</span>
+                        <span class="keycode">80</span>
+                    </li>
+                    <li data-keycode="219" data-name="LEFT_BRACKET" data-group="spec" class="key double">
+                        <span class="shift">{</span>
+                        <span class="main">[</span>
+                        
+                        <span class="keyname">LEFT_BRACKET</span>
+                        <span class="keycode">219</span>
+                    </li>
+                    <li data-keycode="221" data-name="RIGHT_BRACKET" data-group="spec" class="key double">
+                        <span class="shift">}</span>
+                        <span class="main">]</span>
+                        
+                        <span class="keyname">RIGHT_BRACKET</span>
+                        <span class="keycode">221</span>
+                    </li>
+                    <li data-keycode="220" data-name="BACKSLASH" data-group="spec" class="key double column1_5 with_margin">
+                        <span class="shift">|</span>
+                        <span class="main">\</span>
+                        
+                        <span class="keyname">BACKSLASH</span>
+                        <span class="keycode">220</span>
+                    </li>
+                    
+                    <li data-keycode="35" data-name="END" data-group="meta" class="key named">
+                        End
+                    
+                        <span class="keyname">END</span>
+                        <span class="keycode">35</span>
+                    </li>
+                    <li data-keycode="46" data-name="DELETE" data-group="meta" class="key named">
+                        Delete
+                    
+                        <span class="keyname">DELETE</span>
+                        <span class="keycode">46</span>
+                    </li>
+                    <li data-keycode="34" data-name="PAGE_DOWN" data-group="meta" class="key named">
+                        PgDn
+                    
+                        <span class="keyname">PAGE_DOWN</span>
+                        <span class="keycode">34</span>
+                    </li>
+                </ul>
+            </li>
+            <li class="row">
+                <ul class="keys clearfix">
+                    <li data-keycode="20" data-name="CAPSLOCK" data-group="meta" class="key named column2">
+                        CapsLock
+                        
+                        <span class="keyname">CAPSLOCK</span>
+                        <span class="keycode">20</span>
+                    </li>
+                    <li data-keycode="65" data-name="A" data-group="letters" class="key">
+                        A
+                        
+                        <span class="keyname">A</span>
+                        <span class="keycode">65</span>
+                    </li>
+                    <li data-keycode="83" data-name="S" data-group="letters" class="key">
+                        S
+                        
+                        <span class="keyname">S</span>
+                        <span class="keycode">83</span>
+                    </li>
+                    <li data-keycode="68" data-name="D" data-group="letters" class="key">
+                        D
+                        
+                        <span class="keyname">D</span>
+                        <span class="keycode">68</span>
+                    </li>
+                    <li data-keycode="70" data-name="F" data-group="letters" class="key">
+                        F
+                        
+                        <span class="keyname">F</span>
+                        <span class="keycode">70</span>
+                    </li>
+                    <li data-keycode="71" data-name="G" data-group="letters" class="key">
+                        G
+                        
+                        <span class="keyname">G</span>
+                        <span class="keycode">71</span>
+                    </li>
+                    <li data-keycode="72" data-name="H" data-group="letters" class="key">
+                        H
+                        
+                        <span class="keyname">H</span>
+                        <span class="keycode">72</span>
+                    </li>
+                    <li data-keycode="74" data-name="J" data-group="letters" class="key">
+                        J
+                    
+                        <span class="keyname">J</span>
+                        <span class="keycode">74</span>
+                    </li>
+                    <li data-keycode="75" data-name="K" data-group="letters" class="key">
+                        K
+                        
+                        <span class="keyname">K</span>
+                        <span class="keycode">75</span>
+                    </li>
+                    <li data-keycode="76" data-name="L" data-group="letters" class="key">
+                        L
+                        
+                        <span class="keyname">L</span>
+                        <span class="keycode">76</span>
+                    </li>
+                    <li data-keycode="59" data-name="SEMICOLON" data-group="spec" class="key double">
+                        <span class="shift">:</span>
+                        <span class="main">;</span>
+                        
+                        <span class="keyname">SEMICOLON</span>
+                        <span class="keycode">59</span>
+                    </li>
+                    <li data-keycode="222" data-name="APOSTROPHE" data-group="spec" class="key double">
+                        <span class="shift">"</span>
+                        <span class="main">'</span>
+                        
+                        <span class="keyname">APOSTROPHE</span>
+                        <span class="keycode">222</span>
+                    </li>
+                    <li data-keycode="13" data-name="ENTER" data-group="meta" class="key named right column2">
+                        Enter
+                        
+                        <span class="keyname">ENTER</span>
+                        <span class="keycode">13</span>
+                    </li>
+                </ul>
+            </li>
+            <li class="row">
+                <ul class="keys clearfix">
+                    <li data-keycode="16" data-name="SHIFT" data-group="meta" class="key named column2_5">
+                        Shift
+                    
+                        <span class="keyname">SHIFT</span>
+                        <span class="keycode">16</span>
+                    </li>
+                    <li data-keycode="90" data-name="Z" data-group="letters" class="key">
+                        Z
+                    
+                        <span class="keyname">Z</span>
+                        <span class="keycode">90</span>
+                    </li>
+                    <li data-keycode="88" data-name="X" data-group="letters" class="key">
+                        X
+                        
+                        <span class="keyname">X</span>
+                        <span class="keycode">88</span>
+                    </li>
+                    <li data-keycode="67" data-name="C" data-group="letters" class="key">
+                        C
+                    
+                        <span class="keyname">C</span>
+                        <span class="keycode">67</span>
+                    </li>
+                    <li data-keycode="86" data-name="V" data-group="letters" class="key">
+                        V
+                        
+                        <span class="keyname">V</span>
+                        <span class="keycode">86</span>
+                    </li>
+                    <li data-keycode="66" data-name="B" data-group="letters" class="key">
+                        B
+                        
+                        <span class="keyname">B</span>
+                        <span class="keycode">66</span>
+                    </li>
+                    <li data-keycode="78" data-name="N" data-group="letters" class="key">
+                        N
+                        
+                        <span class="keyname">N</span>
+                        <span class="keycode">78</span>
+                    </li>
+                    <li data-keycode="77" data-name="M" data-group="letters" class="key">
+                        M
+        
+                        <span class="keyname">M</span>
+                        <span class="keycode">77</span>
+                    </li>
+                    <li data-keycode="188" data-name="COMMA" data-group="spec" class="key double">
+                        <span class="main">&lt;</span>
+                        <span class="shift">,</span>
+                        
+                        <span class="keyname">COMMA</span>
+                        <span class="keycode">188</span>
+                    </li>
+                    <li data-keycode="190" data-name="PERIOD" data-group="spec" class="key double">
+                        <span class="main">&gt;</span>
+                        <span class="shift">.</span>
+                        
+                        <span class="keyname">PERIOD</span>
+                        <span class="keycode">190</span>
+                    </li>
+                    <li data-keycode="191" data-name="SLASH" data-group="spec" class="key double">
+                        <span class="main">?</span>
+                        <span class="shift">/</span>
+                        
+                        <span class="keyname">SLASH</span>
+                        <span class="keycode">191</span>
+                    </li>
+                    <li data-keycode="16" data-name="SHIFT" data-group="meta" class="key named right column2_5 with_margin">
+                        Shift
+                    
+                        <span class="keyname">SHIFT</span>
+                        <span class="keycode">16</span>
+                    </li>
+                    
+                    <li data-keycode="38" data-name="UP_ARROW" data-group="arrows" class="key with_left_space">
+                        &uarr;
+                    
+                        <span class="keyname">UP_ARROW</span>
+                        <span class="keycode">38</span>
+                    </li>
+                    
+                </ul>
+            </li>
+            <li class="row">
+                <ul class="keys clearfix">
+                    <li data-keycode="17" data-name="CTRL" data-group="meta" class="key named column2">
+                        Ctrl
+                    
+                        <span class="keyname">CTRL</span>
+                        <span class="keycode">17</span>
+                    </li>
+                    <li data-keycode="91" data-name="WIN" data-group="meta" class="key named">
+                        Win
+                    
+                        <span class="keyname">WIN</span>
+                        <span class="keycode">91</span>
+                    </li>
+                    <li data-keycode="18" data-name="ALT" data-group="meta" class="key named column1_5">
+                        Alt
+                    
+                        <span class="keyname">ALT</span>
+                        <span class="keycode">18</span>
+                    </li>
+                    <li data-keycode="32" data-name="SPACE" data-group="meta" class="key column6">
+                        <span class="keyname">SPACE</span>
+                        <span class="keycode">32</span>
+                    </li>
+                    <li data-keycode="18" data-name="ALT" data-group="meta" class="key named right column1_5">
+                        Alt
+                    
+                        <span class="keyname">ALT</span>
+                        <span class="keycode">18</span>
+                    </li>
+                    <li data-keycode="17" data-name="CTRL" data-group="meta" class="key named right column2 with_margin">
+                        Ctrl
+                    
+                        <span class="keyname">CTRL</span>
+                        <span class="keycode">17</span>
+                    </li>
+                    <li data-keycode="37" data-name="LEFT_ARROW" data-group="arrows" class="key">
+                        &larr;
+                    
+                        <span class="keyname">LEFT_ARROW</span>
+                        <span class="keycode">37</span>
+                    </li>
+                    <li data-keycode="40" data-name="DOWN_ARROW" data-group="arrows" class="key">
+                        &darr;
+                    
+                        <span class="keyname">DOWN_ARROW</span>
+                        <span class="keycode">40</span>
+                    </li>
+                    <li data-keycode="39" data-name="RIGHT_ARROW" data-group="arrows" class="key">
+                        &rarr;
+                    
+                        <span class="keyname">RIGHT_ARROW</span>
+                        <span class="keycode">39</span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 
 </div>
 
@@ -609,39 +609,39 @@
 <form action="#" id="settings_form">
     <span class="close_button"></span>
         
-		<h5>Settings</h5>
-		<section>
-			<label>Sort by:</label>
-			<ul class="checkboxes">
-				<li>
-					<label>
-						<input type="radio" name="sort" id="sort_alph" value="alphabet" /> 
-						groups and alphabetical
-					</label>
-				</li>
-				<li>
-					<label>
-						<input type="radio" name="sort" id="sort_add" value="add" /> 
-						order of addition
-					</label>
-				</li>
-				<li>
-					<label>
-						<input type="radio" name="sort" id="sort_codes" value="keycode" />
-						keyCodes
-					</label>
-				</li>
-			</ul>
-		</section>
-		<section>
-			<label>
-				<input type="checkbox" id="with_columns" /> 
-				columns
-			</label>
-		</section>
-		<div class="buttons">
-			<button class="save_button">OK</button>
-		</div>
+        <h5>Settings</h5>
+        <section>
+            <label>Sort by:</label>
+            <ul class="checkboxes">
+                <li>
+                    <label>
+                        <input type="radio" name="sort" id="sort_alph" value="alphabet" /> 
+                        groups and alphabetical
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" name="sort" id="sort_add" value="add" /> 
+                        order of addition
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" name="sort" id="sort_codes" value="keycode" />
+                        keyCodes
+                    </label>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <label>
+                <input type="checkbox" id="with_columns" /> 
+                columns
+            </label>
+        </section>
+        <div class="buttons">
+            <button class="save_button">OK</button>
+        </div>
     </div>
 </form>
 
@@ -653,29 +653,29 @@
         <section>
             <h2>1. Set settings</h2>
             <p>
-				A sorting type (by default - groups and alphabetical) and columns.
-			</p>
+                A sorting type (by default - groups and alphabetical) and columns.
+            </p>
         </section>
         <section>
             <h2>2. Select keys</h2>
             <p>
-				Press and select keys (a second click - deselect key).
-			</p>
-        </section>
-		<section>
-            <h2>3. Get config</h2>
-            <p>
-				and copy it in your js-code.
-			</p>
+                Press and select keys (a second click - deselect key).
+            </p>
         </section>
         <section>
-			<h2>4. Use config</h2>
+            <h2>3. Get config</h2>
+            <p>
+                and copy it in your js-code.
+            </p>
+        </section>
+        <section>
+            <h2>4. Use config</h2>
             <p>switch (e.keyCode) {<br />
-			&nbsp;&nbsp;&nbsp;&nbsp;case KEYS.ENTER:<br />
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// code<br />
-			&nbsp;&nbsp;&nbsp;&nbsp;case KEYS.DELETE:<br />
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// code<br />
-			}</p>
+            &nbsp;&nbsp;&nbsp;&nbsp;case KEYS.ENTER:<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// code<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;case KEYS.DELETE:<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// code<br />
+            }</p>
         </section>
     </div>
     <footer>
