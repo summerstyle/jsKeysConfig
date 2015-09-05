@@ -2,11 +2,8 @@
  * jsKeysConfig generator
  * http://github.com/summerstyle/jsKeysConfig
  * 
- * Copyright 2014 Vera Lobacheva (http://summerstyle.ru)
+ * Copyright 2015 Vera Lobacheva (http://summerstyle.ru)
  * Released under the GPL3 (GPL3.txt)
- * 
- * Sun April 20 2014 20:25:15 GMT+0400
- * 
  */
 
 'use strict';
@@ -17,57 +14,8 @@ var keysConfig = (function() {
         columns : true,
         sort_by : 0 // 0 - by groups and alphabet, 1 - by added, 2 - by codes
     };
-    
-    /* Utilities */
-    var utils = {
-        id : function (str) {
-            return document.getElementById(str);
-        },
-        hide : function(node) {
-            node.style.display = 'none';
-            
-            return this;
-        },
-        show : function(node) {
-            node.style.display = 'block';
-            
-            return this;
-        },
-        foreach : function(arr, func) {
-            for(var i = 0, count = arr.length; i < count; i++) {
-                func(arr[i], i);
-            };
-        },
-        foreachReverse : function(arr, func) {
-            for(var i = arr.length - 1; i >= 0; i--) {
-                func(arr[i], i);
-            };
-        },
-        debug : (function() {
-            var output = document.getElementById('debug');
-            
-            return function() {
-                output.innerHTML = [].join.call(arguments, ' ');
-            };
-        })(),
-        stopEvent : function(e) {
-            e.stopPropagation();
-            e.preventDefault();
-            
-            return this;
-        },
-        extend : function(obj, options) {
-            var target = {};
-            
-            for (name in obj) {
-                if(obj.hasOwnProperty(name)) {
-                    target[name] = options[name] ? options[name] : obj[name];
-                };
-            };
-            
-            return target;
-        }
-    };
+
+    var utils = App.utils;
     
     /* Keyboard */
     var keyboard = (function() {
@@ -281,170 +229,107 @@ var keysConfig = (function() {
         }
     })();
 
-    /* Buttons and actions */
-    var buttons = (function() {
-        var all = utils.id('nav').getElementsByTagName('li'),
-            clear = utils.id('clear_button'),
-            settings = utils.id('settings_button'),
-            get_config = utils.id('get_config_button'),
-            show_help = utils.id('help_button');
-        
-        function onClearButtonClick(e) {
+    // Menu
+    var menu = new App.Menu(utils.dom.id('nav'), {
+        'clear' : function() {
             // Deselect all keys
             if (confirm('Clear all?')) {
                 selected_keys.clear();
                 code.hide();
             };
-            
-            e.preventDefault();
-        };
-        
-        function onGetConfigButtonClick(e) {
-            // JS config code
+        },
+        'get_config' : function() {
             code.print();
-            
-            e.preventDefault();
-        };
-        
-        function onShowHelpButtonClick(e) {
-            // Help block
+        },
+        'show_help' : function() {
             help.show();
-            
-            e.preventDefault();
-        };
-        
-        function onShowSettingsFormButtonClick(e) {
-            // Settings form
-            settings_form.show();
-            
-            e.preventDefault();
-        };
-        
-        clear.addEventListener('click', onClearButtonClick, false);
-        get_config.addEventListener('click', onGetConfigButtonClick, false);
-        show_help.addEventListener('click', onShowHelpButtonClick, false);
-        settings.addEventListener('click', onShowSettingsFormButtonClick, false);
-    })();
+        },
+        'settings' : function() {
+            settings_form.open();
+        } 
+    });
 
     /* Help block */
-    var help = (function() {
-        var block = utils.id('help'),
-            overlay = utils.id('overlay'),
-            close_button = block.querySelector('.close_button');
-            
-        function hide() {
-            utils.hide(block);
-            utils.hide(overlay);
-        }
-        
-        function show() {
-            utils.show(block);
-            utils.show(overlay);
-        }
-            
-        overlay.addEventListener('click', hide, false);
-            
-        close_button.addEventListener('click', hide, false);
-            
-        return {
-            show : show,
-            hide : hide
-        };  
-    })();
+    var help = new App.Window({
+        content_el : document.getElementById('help'),
+        overlay : true
+    });
     
     /* For js code of keys config */
-    var code = (function(){
-        var block = utils.id('code'),
-            content = utils.id('code_content'),
-            close_button = block.querySelector('.close_button');
-            
-        close_button.addEventListener('click', function(e) {
-            utils.hide(block);
-            e.preventDefault();
-        }, false);
-            
-        return {
-            print: function() {
-                content.innerHTML = selected_keys.generate_config();
-                utils.show(block);
-            },
-            hide: function() {
-                utils.hide(block);
-            }
-        };
-    })();
+    var code = new App.Window({
+        content_el : utils.dom.id('code'),
+        overlay : true,
+        js_module : function(self) {
+            return {
+                print: function() {
+                    self.content_el.innerHTML = selected_keys.generate_config();
+                    self.show();
+                }
+            };
+        }
+    });
     
     /* Settings form */
-    var settings_form = (function() {
-        var form = utils.id('settings_form'),
-            overlay = utils.id('overlay'),
+    var settings_form = new App.Window({
+        content_el : utils.dom.id('settings_form'),
+        overlay : true,
+        js_module : function(self) {
+            var form = self.content_el;
+            
             /* 2 parameters - sort and columns */
-            inputs = {
+            var inputs = {
                 sort : [
-                    utils.id('sort_alph'),
-                    utils.id('sort_add'),
-                    utils.id('sort_codes')
+                    utils.dom.id('sort_alph'),
+                    utils.dom.id('sort_add'),
+                    utils.dom.id('sort_codes')
                 ],
-                columns : utils.id('with_columns')
+                columns : utils.dom.id('with_columns')
             },
-            save_button = form.querySelector('.save_button'),
-            close_button = form.querySelector('.close_button');
+            save_button = form.querySelector('.save_button');
         
-        function show() {
-            load();
+            function load() {
+                switch (settings.sort_by) {
+                    case 1:
+                        inputs.sort[0].checked = false;
+                        inputs.sort[1].checked = true;
+                        inputs.sort[2].checked = false;
+                        break;
+                    
+                    case 2:
+                        inputs.sort[0].checked = false;
+                        inputs.sort[1].checked = false;
+                        inputs.sort[2].checked = true;
+                        break;
+                    
+                    default:
+                        inputs.sort[0].checked = true;
+                        inputs.sort[1].checked = false;
+                        inputs.sort[2].checked = false;
+                };
+                
+                inputs.columns.checked = settings.columns;
+            }
             
-            utils.show(form);
-            utils.show(overlay);
-        }
-        
-        function load() {
-            switch (settings.sort_by) {
-                case 1:
-                    inputs.sort[0].checked = false;
-                    inputs.sort[1].checked = true;
-                    inputs.sort[2].checked = false;
-                    break;
+            function save(e) {
+                e.preventDefault();
                 
-                case 2:
-                    inputs.sort[0].checked = false;
-                    inputs.sort[1].checked = false;
-                    inputs.sort[2].checked = true;
-                    break;
+                settings.sort_by = inputs.sort[1].checked ? 1 : inputs.sort[2].checked ? 2 : 0;
                 
-                default:
-                    inputs.sort[0].checked = true;
-                    inputs.sort[1].checked = false;
-                    inputs.sort[2].checked = false;
+                settings.columns = inputs.columns.checked;
+                
+                self.hide();
+            }
+            
+            save_button.addEventListener('click', save, false);
+           
+            return {
+                open : function() {
+                    load();
+                    
+                    self.show();
+                }
             };
-            
-            inputs.columns.checked = settings.columns;
         }
-        
-        function hide() {
-            utils.hide(form);
-            utils.hide(overlay);
-        }
-        
-        function save(e) {
-            e.preventDefault();
-            
-            settings.sort_by = inputs.sort[1].checked ? 1 : inputs.sort[2].checked ? 2 : 0;
-            
-            settings.columns = inputs.columns.checked;
-            
-            hide();
-        }
-        
-        overlay.addEventListener('click', hide, false);
-        
-        close_button.addEventListener('click', hide, false);
-        
-        save_button.addEventListener('click', save, false);
-        
-        return {
-            show : show,
-            hide : hide
-        };
-    })();
-    
+    });
+
 })();

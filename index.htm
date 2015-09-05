@@ -3,37 +3,47 @@
 <head>
     <title>jsKeysConfig generator</title>
     <meta charset="utf-8" />
-    <link href="main.css" type="text/css" rel="stylesheet" />
+
+    <link href="libs/app/reset.css" rel="stylesheet" />
+    <link href="libs/app/app.css" rel="stylesheet" />
+    
+    <link href="main.css" rel="stylesheet" />
     <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
     <!--
         jsKeysConfig generator
         http://github.com/summerstyle/jsKeysConfig
         
-        Copyright 2014 Vera Lobacheva (http://summerstyle.ru)
+        Copyright 2015 Vera Lobacheva (http://summerstyle.ru)
         Released under the GPL3 (GPL3.txt)
-        
-        Sun April 20 2014 20:25:15 GMT+0400
     -->
 </head>
 <body>
 <noscript>
-    <div id="noscript">
+    <div class="global-error">
         Please, enable javascript in your browser
     </div>
 </noscript>
 
 <header id="header">
     <h1 id="logo">
-        <a href="http://github.com/summerstyle/keysconfig">
-            <img alt="jsKeysConfig" src="data:image/png;base64,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" />
+        <a href="http://github.com/summerstyle/jsKeysConfig">
+            jsKeysConfig
         </a>                                    
     </h1>
     <nav id="nav" class="clearfix">
-        <ul>
-            <li id="get_config_button"><a href="#">get config</a></li>
-            <li id="settings_button"><a href="#">settings</a></li>
-            <li id="clear_button"><a href="#">clear</a></li>
-            <li id="help_button"><a href="#">?</a></li>
+        <ul class="menu menu_level1">
+            <li data-action="get_config" class="menu__item">
+                <span class="menu__item-name">get config</span>
+            </li>
+            <li data-action="settings" class="menu__item">
+                <span class="menu__item-name">settings</span>
+            </li>
+            <li data-action="clear" class="menu__item">
+                <span class="menu__item-name">clear</span>
+            </li>
+            <li data-action="show_help" class="menu__item">
+                <span class="menu__item-name">?</span>
+            </li>
         </ul>
     </nav>
     <div id="coords"></div>
@@ -145,74 +155,74 @@
                         <span class="keyname">TILDE</span>
                         <span class="keycode">192</span>
                     </li>
-                    <li data-keycode="49" data-name="DIGIT_1" data-group="digits" class="key double">
+                    <li data-keycode="49" data-name="'1'" data-group="digits" class="key double">
                         <span class="shift">!</span>
                         <span class="main">1</span>
                         
-                        <span class="keyname">DIGIT_1</span>
+                        <span class="keyname">'1'</span>
                         <span class="keycode">49</span>
                     </li>
-                    <li data-keycode="50" data-name="DIGIT_2" data-group="digits" class="key double">
+                    <li data-keycode="50" data-name="'2'" data-group="digits" class="key double">
                         <span class="shift">@</span>
                         <span class="main">2</span>
                         
-                        <span class="keyname">DIGIT_2</span>
+                        <span class="keyname">'2'</span>
                         <span class="keycode">50</span>
                     </li>
-                    <li data-keycode="51" data-name="DIGIT_3" data-group="digits" class="key double">
+                    <li data-keycode="51" data-name="'3'" data-group="digits" class="key double">
                         <span class="shift">#</span>
                         <span class="main">3</span>
                         
-                        <span class="keyname">DIGIT_3</span>
+                        <span class="keyname">'3'</span>
                         <span class="keycode">51</span>
                     </li>
-                    <li data-keycode="52" data-name="DIGIT_4" data-group="digits" class="key double">
+                    <li data-keycode="52" data-name="'4'" data-group="digits" class="key double">
                         <span class="shift">$</span>
                         <span class="main">4</span>
                         
-                        <span class="keyname">DIGIT_4</span>
+                        <span class="keyname">'4'</span>
                         <span class="keycode">52</span>
                     </li>
-                    <li data-keycode="53" data-name="DIGIT_5" data-group="digits" class="key double">
+                    <li data-keycode="53" data-name="'5'" data-group="digits" class="key double">
                         <span class="shift">%</span>
                         <span class="main">5</span>
                         
-                        <span class="keyname">DIGIT_5</span>
+                        <span class="keyname">'5'</span>
                         <span class="keycode">53</span>
                     </li>
-                    <li data-keycode="54" data-name="DIGIT_6" data-group="digits" class="key double">
+                    <li data-keycode="54" data-name="'6'" data-group="digits" class="key double">
                         <span class="shift">^</span>
                         <span class="main">6</span>
                         
-                        <span class="keyname">DIGIT_6</span>
+                        <span class="keyname">'6'</span>
                         <span class="keycode">54</span>
                     </li>
-                    <li data-keycode="55" data-name="DIGIT_7" data-group="digits" class="key double">
+                    <li data-keycode="55" data-name="'7'" data-group="digits" class="key double">
                         <span class="shift">&</span>
                         <span class="main">7</span>
                         
-                        <span class="keyname">DIGIT_7</span>
+                        <span class="keyname">'7'</span>
                         <span class="keycode">55</span>
                     </li>
-                    <li data-keycode="56" data-name="DIGIT_8" data-group="digits" class="key double">
+                    <li data-keycode="56" data-name="'8'" data-group="digits" class="key double">
                         <span class="shift">*</span>
                         <span class="main">8</span>
                         
-                        <span class="keyname">DIGIT_8</span>
+                        <span class="keyname">'8'</span>
                         <span class="keycode">56</span>
                     </li>
-                    <li data-keycode="57" data-name="DIGIT_9" data-group="digits" class="key double">
+                    <li data-keycode="57" data-name="'9'" data-group="digits" class="key double">
                         <span class="shift">(</span>
                         <span class="main">9</span>
                         
-                        <span class="keyname">DIGIT_9</span>
+                        <span class="keyname">'9'</span>
                         <span class="keycode">56</span>
                     </li>
-                    <li data-keycode="48" data-name="DIGIT_0" data-group="digits" class="key double">
+                    <li data-keycode="48" data-name="'0'" data-group="digits" class="key double">
                         <span class="shift">)</span>
                         <span class="main">0</span>
                         
-                        <span class="keyname">DIGIT_0</span>
+                        <span class="keyname">'0'</span>
                         <span class="keycode">48</span>
                     </li>
                     <li data-keycode="173" data-name="MINUS" data-group="spec" class="key double">
@@ -600,91 +610,85 @@
 
 
 <!-- For js config code -->
-<div id="code">
-    <span class="close_button" title="close"></span>
-    <div id="code_content"></div>
-</div>
+<div class="code" id="code" data-header="Code"></div>
 
 <!-- Settings block -->
-<form action="#" id="settings_form">
-    <span class="close_button"></span>
-        
-        <h5>Settings</h5>
-        <section>
-            <label>Sort by:</label>
-            <ul class="checkboxes">
-                <li>
-                    <label>
-                        <input type="radio" name="sort" id="sort_alph" value="alphabet" /> 
-                        groups and alphabetical
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="radio" name="sort" id="sort_add" value="add" /> 
-                        order of addition
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input type="radio" name="sort" id="sort_codes" value="keycode" />
-                        keyCodes
-                    </label>
-                </li>
-            </ul>
-        </section>
-        <section>
-            <label>
-                <input type="checkbox" id="with_columns" /> 
-                columns
-            </label>
-        </section>
-        <div class="buttons">
-            <button class="save_button">OK</button>
-        </div>
+<form action="#" id="settings_form" class="form" data-header="Settings">
+    <section>
+        <label>Sort by:</label>
+        <ul class="checkboxes">
+            <li>
+                <label>
+                    <input type="radio" name="sort" id="sort_alph" value="alphabet" /> 
+                    groups and alphabetical
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="sort" id="sort_add" value="add" /> 
+                    order of addition
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" name="sort" id="sort_codes" value="keycode" />
+                    keyCodes
+                </label>
+            </li>
+        </ul>
+    </section>
+    <section>
+        <label>
+            <input type="checkbox" id="with_columns" /> 
+            columns
+        </label>
+    </section>
+    <div class="buttons">
+        <button class="save_button">OK</button>
     </div>
 </form>
 
 <!-- Help block -->
-<div id="overlay"></div>
-<div id="help">
-    <span class="close_button"></span>
+<div id="help" data-header="Help">
     <div class="txt">
         <section>
-            <h2>1. Set settings</h2>
+            <h5>1. Set settings</h5>
             <p>
                 A sorting type (by default - groups and alphabetical) and columns.
             </p>
         </section>
         <section>
-            <h2>2. Select keys</h2>
+            <h5>2. Select keys</h5>
             <p>
                 Press and select keys (a second click - deselect key).
             </p>
         </section>
         <section>
-            <h2>3. Get config</h2>
+            <h5>3. Get config</h5>
             <p>
                 and copy it in your js-code.
             </p>
         </section>
         <section>
-            <h2>4. Use config</h2>
-            <p>switch (e.keyCode) {<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;case KEYS.ENTER:<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// code<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;case KEYS.DELETE:<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// code<br />
-            }</p>
+            <h5>4. Use config</h5>
+            <div class="code">
+                switch (e.keyCode) {<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;case KEYS.ENTER:<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// code<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;case KEYS.DELETE:<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// code<br />
+                }
+            </div>
         </section>
+        <footer>
+            <a href="http://github.com/summerstyle/jsKeysConfig">jsKeysConfig generator</a><br />
+            &copy; 2015 Vera Lobatcheva<br />
+            GPL3 License
+        </footer>
     </div>
-    <footer>
-        <a href="http://github.com/summerstyle/jsKeysConfig">jsKeysConfig generator</a><br />
-        &copy; 2014 Vera Lobatcheva<br />
-        GPL3 License
-    </footer>
 </div>
 
+<script src="libs/app/App.js"></script>
 <script src="jskeysconfig.js"></script>
 </body>
 </html>
